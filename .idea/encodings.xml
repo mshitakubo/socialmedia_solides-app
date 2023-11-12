@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/api-gateway-zuul/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-srv/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oauth-srv/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/posts-srv/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/user-srv/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/users/src/main/java" charset="UTF-8" />
   </component>

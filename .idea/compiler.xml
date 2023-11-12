@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="oauth-srv" />
         <module name="user-srv" />
+        <module name="posts-srv" />
         <module name="eureka-srv" />
         <module name="api-gateway-zuul" />
       </profile>
@@ -21,6 +22,7 @@
       <module name="api-gateway-zuul" options="-parameters" />
       <module name="eureka-srv" options="-parameters" />
       <module name="oauth-srv" options="-parameters" />
+      <module name="posts-srv" options="-parameters" />
       <module name="user-srv" options="-parameters" />
       <module name="users" options="-parameters" />
     </option>

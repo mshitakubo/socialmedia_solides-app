@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/api-gateway-zuul/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-srv/pom.xml" />
         <option value="$PROJECT_DIR$/oauth-srv/pom.xml" />
+        <option value="$PROJECT_DIR$/posts-srv/pom.xml" />
       </list>
     </option>
   </component>
