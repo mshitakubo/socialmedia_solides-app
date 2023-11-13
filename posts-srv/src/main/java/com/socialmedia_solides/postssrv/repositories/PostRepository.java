@@ -1,6 +1,6 @@
-package com.socialmedia_solides.repositories;
+package com.socialmedia_solides.postssrv.repositories;
 
-import com.socialmedia_solides.entities.Post;
+import com.socialmedia_solides.postssrv.entities.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PostRepository extends JpaRepository<Post, Long> {

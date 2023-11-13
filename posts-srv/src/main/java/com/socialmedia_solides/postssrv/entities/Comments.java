@@ -1,4 +1,4 @@
-package com.socialmedia_solides.entities;
+package com.socialmedia_solides.postssrv.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,7 +13,7 @@ public class Comments implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String comment;
-    private String user;
+    private String users;
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
@@ -22,10 +22,10 @@ public class Comments implements Serializable {
 
     }
 
-    public Comments(Long id, String comment, String user, Post post) {
+    public Comments(Long id, String comment, String users, Post post) {
         this.id = id;
         this.comment = comment;
-        this.user = user;
+        this.users = users;
         this.post = post;
     }
 
@@ -45,12 +45,12 @@ public class Comments implements Serializable {
         this.comment = comment;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsers() {
+        return users;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsers(String users) {
+        this.users = users;
     }
 
     public Post getPost() {

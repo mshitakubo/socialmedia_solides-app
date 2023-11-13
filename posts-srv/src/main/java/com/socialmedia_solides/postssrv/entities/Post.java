@@ -1,4 +1,4 @@
-package com.socialmedia_solides.entities;
+package com.socialmedia_solides.postssrv.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,19 +17,19 @@ public class Post implements Serializable {
     private String postText;
     private String image;
     private String link;
-    private String user;
+    private String users;
     @OneToMany(mappedBy = "post")
     private List<Comments> comments = new ArrayList<>();
 
     public Post() {
     }
 
-    public Post(Long id, String postText, String image, String link, String user, List<Comments> comments) {
+    public Post(Long id, String postText, String image, String link, String users, List<Comments> comments) {
         this.id = id;
         this.postText = postText;
         this.image = image;
         this.link = link;
-        this.user = user;
+        this.users = users;
         this.comments = comments;
     }
 
@@ -65,12 +65,12 @@ public class Post implements Serializable {
         this.link = link;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsers() {
+        return users;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsers(String users) {
+        this.users = users;
     }
 
     public List<Comments> getComments() {
