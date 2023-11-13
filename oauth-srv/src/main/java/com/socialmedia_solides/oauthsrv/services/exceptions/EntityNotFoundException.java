@@ -1,6 +1,8 @@
 package com.socialmedia_solides.oauthsrv.services.exceptions;
 
-public class EntityNotFoundException extends RuntimeException {
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+public class EntityNotFoundException extends UsernameNotFoundException {
 
     public EntityNotFoundException(String msg) {
         super(msg);
