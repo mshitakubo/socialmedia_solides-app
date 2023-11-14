@@ -1,35 +1,31 @@
-package com.socialmedia_solides.postssrv.entities;
+package com.socialmedia_solides.postssrv.models;
+
+import com.socialmedia_solides.postssrv.entities.Comments;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Entity
-@Table(name = "tb_post")
-public class Post implements Serializable {
+public class PostDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String postText;
     private String image;
     private String link;
     private String users;
-    @OneToMany
-    private List<Comments> comments;
 
-    public Post() {
+    public PostDto() {
     }
 
-    public Post(Long id, String postText, String image, String link, String users, List<Comments> comments) {
+    public PostDto(Long id, String postText, String image, String link, String users) {
         this.id = id;
         this.postText = postText;
         this.image = image;
         this.link = link;
         this.users = users;
-        this.comments = comments;
     }
 
     public Long getId() {
@@ -72,19 +68,11 @@ public class Post implements Serializable {
         this.users = users;
     }
 
-    public List<Comments> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comments> comments) {
-        this.comments = comments;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Post post = (Post) o;
+        PostDto post = (PostDto) o;
         return Objects.equals(id, post.id);
     }
 
