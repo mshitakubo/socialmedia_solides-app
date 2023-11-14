@@ -1,7 +1,9 @@
 package com.socialmediasolides.usersrv.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -24,7 +26,7 @@ public class User implements Serializable {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<Role> roles = new HashSet<>();
+    private List<Role> roles = new ArrayList<>();
 
     public User() {
     }
@@ -69,8 +71,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.socialmediasolides.usersrv.resources;
 
+import com.socialmediasolides.usersrv.models.dtos.UserDto;
 import com.socialmediasolides.usersrv.entities.User;
 import com.socialmediasolides.usersrv.services.UserSrv;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,12 @@ public class UserResource {
     @GetMapping("/search")
     public ResponseEntity<User> findByEmail(@RequestParam String email) {
         User user = userSrv.findByEmail(email);
+        return ResponseEntity.ok(user);
+    }
+
+    @PostMapping()
+    public ResponseEntity<User> create(@RequestBody UserDto userDto) {
+        User user = userSrv.create(userDto);
         return ResponseEntity.ok(user);
     }
 
