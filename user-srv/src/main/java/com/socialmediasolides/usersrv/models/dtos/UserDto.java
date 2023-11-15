@@ -1,19 +1,36 @@
 package com.socialmediasolides.usersrv.models.dtos;
 
+import javax.validation.constraints.Email;
+import java.util.List;
+
 public class UserDto {
 
+    private Long id;
     private String name;
+    @Email
     private String email;
     private String password;
+    private List<RolesDto> roles;
+
+    public List<RolesDto> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RolesDto> roles) {
+        this.roles = roles;
+    }
+
 
     public UserDto() {
 
     }
 
-    public UserDto(String name, String email, String password) {
+    public UserDto(Long id, String name, String email, String password, List<RolesDto> roles) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.roles = roles;
     }
 
     public String getName() {
@@ -40,4 +57,11 @@ public class UserDto {
         this.password = password;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

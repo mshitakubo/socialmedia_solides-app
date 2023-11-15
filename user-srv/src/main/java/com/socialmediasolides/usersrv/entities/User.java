@@ -1,10 +1,7 @@
 package com.socialmediasolides.usersrv.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -103,4 +100,5 @@ public class User implements Serializable {
             return false;
         return true;
     }
+
 }
