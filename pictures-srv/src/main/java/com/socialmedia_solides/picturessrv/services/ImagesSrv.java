@@ -23,7 +23,7 @@ public class ImagesSrv {
     public Images sendImages(ImagesDto imagesDto) {
 
         Album album = albumRepository.findById(imagesDto.getAlbumId()).orElseThrow(
-                () -> new EntityNotFoundException("Album não encontrado: " + imagesDto.getAlbumId()));
+                () -> new EntityNotFoundException("album not found: " + imagesDto.getAlbumId()));
 
         Images images = new Images();
         List<Images> list = album.getImages();

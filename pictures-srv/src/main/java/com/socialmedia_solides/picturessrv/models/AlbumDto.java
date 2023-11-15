@@ -11,16 +11,13 @@ public class AlbumDto {
     private Long id;
     @NotBlank
     private String name;
-    @NotBlank(message = "O e-mail deve ser informado")
-    private String createdBy;
     private List<Images> images;
 
     public AlbumDto() {
     }
 
-    public AlbumDto(String name, String createdBy, List<Images> images) {
+    public AlbumDto(String name, List<Images> images) {
         this.name = name;
-        this.createdBy = createdBy;
         this.images = images;
     }
 
@@ -46,14 +43,6 @@ public class AlbumDto {
 
     public void setImages(List<Images> images) {
         this.images = images;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
     }
 
     @Override

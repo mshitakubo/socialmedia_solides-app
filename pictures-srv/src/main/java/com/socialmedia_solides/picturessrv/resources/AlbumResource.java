@@ -23,9 +23,10 @@ public class AlbumResource {
     private ImagesSrv imagesSrv;
 
     @PostMapping
-    public ResponseEntity<Album> create(@RequestBody @Valid AlbumDto albumDto) {
-        Album album = albumSrv.create(albumDto);
-        return ResponseEntity.ok(album);
+    public ResponseEntity<Album> create(@RequestBody @Valid AlbumDto albumDto,
+                                        @RequestHeader(value = "clientId") String clientId) {
+        Album album = albumSrv.create(albumDto, clientId);
+        return ResponseEntity.status(201).body(album);
     }
 
     @GetMapping("/{id}")
@@ -35,8 +36,9 @@ public class AlbumResource {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
-        albumSrv.deleteById(id);
+    public ResponseEntity<Void> deleteById(@PathVariable Long id,
+                                           @RequestHeader(value = "clientId") String clientId) {
+        albumSrv.deleteById(id,clientId);
         return ResponseEntity.status(200).build();
     }
 
