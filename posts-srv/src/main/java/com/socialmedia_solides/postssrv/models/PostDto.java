@@ -11,18 +11,15 @@ public class PostDto implements Serializable {
     private String text;
     private String image;
     private String link;
-    @NotBlank
-    private String createdBy;
 
     public PostDto() {
     }
 
-    public PostDto(Long id, String text, String image, String link, String createdBy) {
+    public PostDto(Long id, String text, String image, String link) {
         this.id = id;
         this.text = text;
         this.image = image;
         this.link = link;
-        this.createdBy = createdBy;
     }
 
     public Long getId() {
@@ -55,14 +52,6 @@ public class PostDto implements Serializable {
 
     public void setLink(String link) {
         this.link = link;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
     }
 
     @Override

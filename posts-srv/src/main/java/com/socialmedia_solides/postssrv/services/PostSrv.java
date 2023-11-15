@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class PostSrv {
@@ -16,11 +17,13 @@ public class PostSrv {
     @Autowired
     private PostRepository postRepository;
 
-    public Post create(PostDto postDto) {
+    public Post create(PostDto postDto, String userRequest) {
+        System.out.println(userRequest);
+
         Post post = new Post();
         BeanUtils.copyProperties(postDto, post);
         post.setCreatedAt(LocalDateTime.now());
-        post.setCreatedBy(postDto.getCreatedBy());
+        post.setCreatedBy(userRequest);
         return postRepository.save(post);
     }
 
@@ -31,6 +34,13 @@ public class PostSrv {
 
     public void deleteById(Long id, String userRequest) {
         System.out.println(userRequest);
-         postRepository.deleteById(id);
+        Post byId = postRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Post não encontrado: " + id));
+
+        if(byId.getCreatedBy() != userRequest){
+            throw new EntityNotFoundException("usuario sem permissão: " + userRequest);
+        }
+
+        postRepository.deleteById(id);
     }
 }

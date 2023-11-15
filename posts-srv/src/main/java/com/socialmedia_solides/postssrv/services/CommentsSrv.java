@@ -22,7 +22,7 @@ public class CommentsSrv {
     private PostRepository postRepository;
 
     public List<Comments> findByUser(String user) {
-        return commentRepository.findByCreatedAt(user);
+        return commentRepository.findByCreatedBy(user);
     }
 
     public Comments findById(Long id) {

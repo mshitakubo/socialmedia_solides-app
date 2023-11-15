@@ -20,7 +20,7 @@ public class PostResource {
 
     @PostMapping
     public ResponseEntity<Post> createPost(@RequestBody PostDto postDto, @RequestHeader(value = "clientId") String clientId) {
-        Post post = postSrv.create(postDto);
+        Post post = postSrv.create(postDto, clientId);
         return ResponseEntity.ok(post);
     }
 
