@@ -21,7 +21,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     private static final String[] PUBLIC = {"/oauth-srv/oauth/token", "/user-srv/users"};
 
-    private static final String[] ROLE_ADMIN = {"/oauth-srv/oauth/token"};
+    private static final String[] ROLE_ADMIN = {"/oauth-srv/oauth/token", "/user-srv/users/search"};
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
