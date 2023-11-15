@@ -29,7 +29,8 @@ public class PostSrv {
                 () -> new EntityNotFoundException("Post não encontrado: " + id));
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Long id, String userRequest) {
+        System.out.println(userRequest);
          postRepository.deleteById(id);
     }
 }

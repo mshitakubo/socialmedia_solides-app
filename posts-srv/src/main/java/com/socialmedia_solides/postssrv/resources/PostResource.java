@@ -19,7 +19,7 @@ public class PostResource {
     private PostSrv postSrv;
 
     @PostMapping
-    public ResponseEntity<Post> createPost(@RequestBody PostDto postDto) {
+    public ResponseEntity<Post> createPost(@RequestBody PostDto postDto, @RequestHeader(value = "clientId") String clientId) {
         Post post = postSrv.create(postDto);
         return ResponseEntity.ok(post);
     }
@@ -31,8 +31,8 @@ public class PostResource {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
-        postSrv.deleteById(id);
+    public ResponseEntity<Void> deleteById(@PathVariable Long id, @RequestHeader(value = "clientId") String clientId) {
+        postSrv.deleteById(id, clientId);
         return ResponseEntity.status(200).build();
     }
 }
