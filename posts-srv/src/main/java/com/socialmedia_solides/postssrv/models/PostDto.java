@@ -8,21 +8,21 @@ public class PostDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private String postText;
+    private String text;
     private String image;
     private String link;
     @NotBlank
-    private String userEmail;
+    private String createdBy;
 
     public PostDto() {
     }
 
-    public PostDto(Long id, String postText, String image, String link, String userEmail) {
+    public PostDto(Long id, String text, String image, String link, String createdBy) {
         this.id = id;
-        this.postText = postText;
+        this.text = text;
         this.image = image;
         this.link = link;
-        this.userEmail = userEmail;
+        this.createdBy = createdBy;
     }
 
     public Long getId() {
@@ -33,12 +33,12 @@ public class PostDto implements Serializable {
         this.id = id;
     }
 
-    public String getPostText() {
-        return postText;
+    public String getText() {
+        return text;
     }
 
-    public void setPostText(String postText) {
-        this.postText = postText;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getImage() {
@@ -57,12 +57,12 @@ public class PostDto implements Serializable {
         this.link = link;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
     @Override

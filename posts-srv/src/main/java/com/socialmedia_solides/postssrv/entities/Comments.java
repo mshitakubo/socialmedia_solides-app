@@ -16,10 +16,10 @@ public class Comments implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String comment;
-    @Email
     @NotEmpty
-    private String userEmail;
+    private String createdBy;
     @ManyToOne
+    @JoinColumn(name="post_id", referencedColumnName = "id")
     private Post post;
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime createdAt;
@@ -28,10 +28,10 @@ public class Comments implements Serializable {
 
     }
 
-    public Comments(Long id, String comment, String userEmail, Post post) {
+    public Comments(Long id, String comment, String createdBy, Post post) {
         this.id = id;
         this.comment = comment;
-        this.userEmail = userEmail;
+        this.createdBy = createdBy;
         this.post = post;
     }
 
@@ -51,12 +51,12 @@ public class Comments implements Serializable {
         this.comment = comment;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
     public Post getPost() {

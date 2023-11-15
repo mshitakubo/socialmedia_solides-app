@@ -22,7 +22,7 @@ public class CommentsSrv {
     private PostRepository postRepository;
 
     public List<Comments> findByUser(String user) {
-        return commentRepository.findByUserEmail(user);
+        return commentRepository.findByCreatedAt(user);
     }
 
     public Comments findById(Long id) {
@@ -39,12 +39,15 @@ public class CommentsSrv {
         List<Comments> list = post.getComments();
 
         comments.setComment(commentsDto.getComment());
-        comments.setUserEmail(commentsDto.getUserEmail());
+        comments.setCreatedBy(commentsDto.getCreatedBy());
         comments.setCreatedAt(LocalDateTime.now());
+        comments.setCreatedBy("Name");
 
         list.add(comments);
-        post.setComments(list);
+//        post.setComments(list);
 
+
+//        return postRepository.save(post);
         return commentRepository.save(comments);
     }
 

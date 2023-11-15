@@ -20,6 +20,7 @@ public class PostSrv {
         Post post = new Post();
         BeanUtils.copyProperties(postDto, post);
         post.setCreatedAt(LocalDateTime.now());
+        post.setCreatedBy(postDto.getCreatedBy());
         return postRepository.save(post);
     }
 

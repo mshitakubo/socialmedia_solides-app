@@ -1,15 +1,14 @@
 package com.socialmedia_solides.postssrv.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_posts")
+@Table(name = "tb_post")
 public class Post implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -18,13 +17,14 @@ public class Post implements Serializable {
     private Long id;
 
     @Column(length = 511)
-    private String postText;
+    private String text;
     private String image;
     private String link;
-    @Email
-    @NotEmpty
-    private String userEmail;
-    @OneToMany(cascade = CascadeType.ALL)
+
+    @NotBlank
+    private String createdBy;
+
+    @OneToMany
     private List<Comments> comments;
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime createdAt;
@@ -32,12 +32,12 @@ public class Post implements Serializable {
     public Post() {
     }
 
-    public Post(Long id, String postText, String image, String link, String userEmail, List<Comments> comments) {
+    public Post(Long id, String text, String image, String link, String createdBy, List<Comments> comments) {
         this.id = id;
-        this.postText = postText;
+        this.text = text;
         this.image = image;
         this.link = link;
-        this.userEmail = userEmail;
+        this.createdBy = createdBy;
         this.comments = comments;
     }
 
@@ -49,12 +49,12 @@ public class Post implements Serializable {
         this.id = id;
     }
 
-    public String getPostText() {
-        return postText;
+    public String getText() {
+        return text;
     }
 
-    public void setPostText(String postText) {
-        this.postText = postText;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getImage() {
@@ -73,12 +73,12 @@ public class Post implements Serializable {
         this.link = link;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
     public List<Comments> getComments() {
