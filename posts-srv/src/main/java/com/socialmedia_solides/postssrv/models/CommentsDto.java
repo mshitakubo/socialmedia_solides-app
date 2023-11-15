@@ -8,17 +8,15 @@ public class CommentsDto implements Serializable {
 
     private Long id;
     private String comment;
-    private String createdBy;
     private Long postId;
 
     public CommentsDto() {
 
     }
 
-    public CommentsDto(Long id, String comment, String createdBy, Long post) {
+    public CommentsDto(Long id, String comment, Long post) {
         this.id = id;
         this.comment = comment;
-        this.createdBy = createdBy;
         this.postId = post;
     }
 
@@ -36,14 +34,6 @@ public class CommentsDto implements Serializable {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
     }
 
     public Long getPostId() {

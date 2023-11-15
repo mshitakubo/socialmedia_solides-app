@@ -6,6 +6,7 @@ import com.socialmedia_solides.postssrv.models.CommentsDto;
 import com.socialmedia_solides.postssrv.repositories.CommentRepository;
 import com.socialmedia_solides.postssrv.repositories.PostRepository;
 import com.socialmedia_solides.postssrv.services.exceptions.EntityNotFoundException;
+import com.socialmedia_solides.postssrv.services.exceptions.ForbiddenException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,38 +28,37 @@ public class CommentsSrv {
 
     public Comments findById(Long id) {
         return commentRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("Comentário não encontrado: " + id));
+                () -> new EntityNotFoundException("comment not found, id: " + id));
     }
 
-    public Comments create(CommentsDto commentsDto) {
+    public Comments create(CommentsDto commentsDto, String clientId) {
 
         Post post = postRepository.findById(commentsDto.getPostId()).orElseThrow(
-                () -> new EntityNotFoundException("Post não encontrado: " + commentsDto.getPostId()));
+                () -> new EntityNotFoundException("post not found, id: " + commentsDto.getPostId()));
 
         Comments comments = new Comments();
         List<Comments> list = post.getComments();
 
         comments.setComment(commentsDto.getComment());
-        comments.setCreatedBy(commentsDto.getCreatedBy());
+        comments.setCreatedBy(clientId);
         comments.setCreatedAt(LocalDateTime.now());
-        comments.setCreatedBy("Name");
 
         list.add(comments);
-//        post.setComments(list);
-
-
-//        return postRepository.save(post);
         return commentRepository.save(comments);
     }
 
-    public void deleteById(Long commentId, Long postId) {
+    public void deleteById(Long commentId, Long postId, String clientId) {
         Post post = postRepository.findById(postId).orElseThrow(
-                () -> new EntityNotFoundException("Post não encontrado: " + postId));
+                () -> new EntityNotFoundException("post not found, postId: " + postId));
 
         List<Comments> listOfComments = post.getComments();
 
         Comments comments = commentRepository.findById(commentId).orElseThrow(
-                () -> new EntityNotFoundException("Comentário não encontrado: " + commentId));
+                () -> new EntityNotFoundException("comment not found, commentId: " + commentId));
+
+        if (!comments.getCreatedBy().equals(clientId)) {
+            throw new ForbiddenException("forbidden, clientId " + clientId);
+        }
 
         listOfComments.remove(comments);
         post.setComments(listOfComments);

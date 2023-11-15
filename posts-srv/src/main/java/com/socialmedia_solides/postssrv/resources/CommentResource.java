@@ -30,14 +30,16 @@ public class CommentResource {
     }
 
     @PostMapping
-    public ResponseEntity<Comments> create(@RequestBody CommentsDto commentsDto) {
-        Comments comments = commentsSrv.create(commentsDto);
+    public ResponseEntity<Comments> create(@RequestBody CommentsDto commentsDto,
+                                           @RequestHeader(value = "clientId") String clientId) {
+        Comments comments = commentsSrv.create(commentsDto, clientId);
         return ResponseEntity.ok(comments);
     }
 
     @DeleteMapping("/{commentId}/post/{postId}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long commentId, @PathVariable Long postId) {
-        commentsSrv.deleteById(commentId, postId);
+    public ResponseEntity<Void> deleteById(@PathVariable Long commentId, @PathVariable Long postId,
+                                           @RequestHeader(value = "clientId") String clientId) {
+        commentsSrv.deleteById(commentId, postId, clientId);
         return ResponseEntity.status(200).build();
     }
 
