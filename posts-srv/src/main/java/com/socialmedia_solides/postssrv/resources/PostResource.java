@@ -29,4 +29,10 @@ public class PostResource {
         Post post = postSrv.findById(id);
         return ResponseEntity.ok(post);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        postSrv.deleteById(id);
+        return ResponseEntity.status(200).build();
+    }
 }

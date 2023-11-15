@@ -1,8 +1,5 @@
 package com.socialmedia_solides.postssrv.models;
 
-import com.socialmedia_solides.postssrv.entities.Post;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,17 +8,17 @@ public class CommentsDto implements Serializable {
 
     private Long id;
     private String comment;
-    private String users;
+    private String userEmail;
     private Long postId;
 
     public CommentsDto() {
 
     }
 
-    public CommentsDto(Long id, String comment, String users, Long post) {
+    public CommentsDto(Long id, String comment, String userEmail, Long post) {
         this.id = id;
         this.comment = comment;
-        this.users = users;
+        this.userEmail = userEmail;
         this.postId = post;
     }
 
@@ -41,12 +38,12 @@ public class CommentsDto implements Serializable {
         this.comment = comment;
     }
 
-    public String getUsers() {
-        return users;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUsers(String users) {
-        this.users = users;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public Long getPostId() {

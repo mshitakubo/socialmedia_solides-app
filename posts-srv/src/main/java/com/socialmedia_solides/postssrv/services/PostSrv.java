@@ -8,6 +8,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class PostSrv {
 
@@ -17,11 +19,16 @@ public class PostSrv {
     public Post create(PostDto postDto) {
         Post post = new Post();
         BeanUtils.copyProperties(postDto, post);
+        post.setCreatedAt(LocalDateTime.now());
         return postRepository.save(post);
     }
 
     public Post findById(Long id) {
         return postRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Post não encontrado: " + id));
+    }
+
+    public void deleteById(Long id) {
+         postRepository.deleteById(id);
     }
 }

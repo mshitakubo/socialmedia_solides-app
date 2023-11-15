@@ -9,6 +9,7 @@ import com.socialmedia_solides.postssrv.services.exceptions.EntityNotFoundExcept
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -21,7 +22,7 @@ public class CommentsSrv {
     private PostRepository postRepository;
 
     public List<Comments> findByUser(String user) {
-        return commentRepository.findByUsers(user);
+        return commentRepository.findByUserEmail(user);
     }
 
     public Comments findById(Long id) {
@@ -38,7 +39,8 @@ public class CommentsSrv {
         List<Comments> list = post.getComments();
 
         comments.setComment(commentsDto.getComment());
-        comments.setUsers(commentsDto.getUsers());
+        comments.setUserEmail(commentsDto.getUserEmail());
+        comments.setCreatedAt(LocalDateTime.now());
 
         list.add(comments);
         post.setComments(list);

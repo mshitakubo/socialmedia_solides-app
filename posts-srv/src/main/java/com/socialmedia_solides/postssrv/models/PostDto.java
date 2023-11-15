@@ -1,11 +1,7 @@
 package com.socialmedia_solides.postssrv.models;
 
-import com.socialmedia_solides.postssrv.entities.Comments;
-
-import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class PostDto implements Serializable {
@@ -15,17 +11,18 @@ public class PostDto implements Serializable {
     private String postText;
     private String image;
     private String link;
-    private String users;
+    @NotBlank
+    private String userEmail;
 
     public PostDto() {
     }
 
-    public PostDto(Long id, String postText, String image, String link, String users) {
+    public PostDto(Long id, String postText, String image, String link, String userEmail) {
         this.id = id;
         this.postText = postText;
         this.image = image;
         this.link = link;
-        this.users = users;
+        this.userEmail = userEmail;
     }
 
     public Long getId() {
@@ -60,12 +57,12 @@ public class PostDto implements Serializable {
         this.link = link;
     }
 
-    public String getUsers() {
-        return users;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUsers(String users) {
-        this.users = users;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     @Override

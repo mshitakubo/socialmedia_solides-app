@@ -1,7 +1,10 @@
 package com.socialmedia_solides.postssrv.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -13,18 +16,22 @@ public class Comments implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String comment;
-    private String users;
+    @Email
+    @NotEmpty
+    private String userEmail;
     @ManyToOne
     private Post post;
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime createdAt;
 
     public Comments() {
 
     }
 
-    public Comments(Long id, String comment, String users, Post post) {
+    public Comments(Long id, String comment, String userEmail, Post post) {
         this.id = id;
         this.comment = comment;
-        this.users = users;
+        this.userEmail = userEmail;
         this.post = post;
     }
 
@@ -44,12 +51,12 @@ public class Comments implements Serializable {
         this.comment = comment;
     }
 
-    public String getUsers() {
-        return users;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUsers(String users) {
-        this.users = users;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public Post getPost() {
@@ -58,6 +65,14 @@ public class Comments implements Serializable {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     @Override
