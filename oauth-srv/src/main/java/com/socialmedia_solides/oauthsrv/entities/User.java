@@ -5,9 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class User implements UserDetails, Serializable {
@@ -57,9 +55,7 @@ public class User implements UserDetails, Serializable {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream()
-                .map(x -> new SimpleGrantedAuthority(x.getRoleName()))
-                .collect(Collectors.toList());
+        return Collections.emptyList();
     }
 
     public String getPassword() {

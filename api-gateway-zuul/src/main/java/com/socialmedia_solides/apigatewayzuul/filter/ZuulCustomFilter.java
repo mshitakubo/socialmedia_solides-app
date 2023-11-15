@@ -29,16 +29,13 @@ public class ZuulCustomFilter extends ZuulFilter {
 
     @Override
     public Object run() throws ZuulException {
-        if (
-                SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null
-        ) {
+
 
             String onlineUser = SecurityContextHolder.getContext().getAuthentication().getName();
-
             RequestContext ctx = RequestContext.getCurrentContext();
             ctx.addZuulRequestHeader(ZULL_HEADER_USER_ID, onlineUser);
 
-        }
+
         return null;
     }
 }
