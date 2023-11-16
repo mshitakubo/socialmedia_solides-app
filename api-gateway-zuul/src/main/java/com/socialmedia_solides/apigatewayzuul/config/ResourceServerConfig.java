@@ -19,12 +19,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     private ZuulCustomFilter zuulCustomFilter;
 
-    private static final String[] PUBLIC = {"/oauth-srv/oauth/token", "/user-srv/users"};
+    private static final String[] PUBLIC = {"/oauth-srv/oauth/token", "/user-srv/users", "/oauth-srv/users"};
 
-    private static final String[] ROLE_ADMIN = {"/oauth-srv/oauth/token", "/user-srv/users/search"};
+    private static final String[] ROLE_ADMIN = {"/oauth-srv/oauth/token", "/user-srv/users/search", "/oauth-srv/users"};
 
     @Override
-    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+    public void configure(ResourceServerSecurityConfigurer resources) {
         resources.tokenStore(jwtTokenStore);
     }
 
