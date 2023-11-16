@@ -1,14 +1,18 @@
 package com.socialmediasolides.usersrv.models.dtos;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 public class UserDto {
 
     private Long id;
+    @NotBlank
     private String name;
-    @Email
+    @NotBlank
     private String email;
+    @NotBlank
     private String password;
     private List<RolesDto> roles;
 

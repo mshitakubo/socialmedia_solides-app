@@ -1,10 +1,9 @@
 package com.socialmediasolides.usersrv.resources;
 
-import com.socialmediasolides.usersrv.models.dtos.UserDto;
 import com.socialmediasolides.usersrv.entities.User;
+import com.socialmediasolides.usersrv.models.dtos.UserDto;
 import com.socialmediasolides.usersrv.services.UserSrv;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,10 +26,10 @@ public class UserResource {
         return ResponseEntity.ok(user);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<User> create(@RequestBody UserDto userDto) {
         User user = userSrv.create(userDto);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.status(201).body(user);
     }
 
 }
