@@ -46,7 +46,7 @@ Basta aguardar um minutinho e tentar novamente =))
 
 ### Mapeamento das operações do sistema
 
-1. Deve-se importar o arquivo [postman_collection.json](..%2F..%2FUsers%2Fnostr%2FDownloads%2Fsocialmedia_solides.postman_collection.json) no Postman.
+1. Deve-se importar o arquivo [postman_collection.json](..%2F..%2FUsers%2Fnostr%2FDownloads%2Fsocialmedia_solides.postman_collection.json)[postman_collection.json](..%2F..%2FUsers%2Fnostr%2FDownloads%2Fsocialmedia_solides.postman_collection.json) no Postman.
 2. Criar as variáveis e atribuir seus devidos valores: 
 `api-gateway = 'http://localhost:8765', 
 username = (usuário cadastrado), 
