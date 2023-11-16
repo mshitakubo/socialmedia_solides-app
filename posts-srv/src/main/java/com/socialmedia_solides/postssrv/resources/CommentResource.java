@@ -1,7 +1,6 @@
 package com.socialmedia_solides.postssrv.resources;
 
 import com.socialmedia_solides.postssrv.entities.Comments;
-import com.socialmedia_solides.postssrv.entities.Post;
 import com.socialmedia_solides.postssrv.models.CommentsDto;
 import com.socialmedia_solides.postssrv.services.CommentsSrv;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,7 @@ public class CommentResource {
     public ResponseEntity<Comments> create(@RequestBody CommentsDto commentsDto,
                                            @RequestHeader(value = "clientId") String clientId) {
         Comments comments = commentsSrv.create(commentsDto, clientId);
-        return ResponseEntity.ok(comments);
+        return ResponseEntity.status(201).body(comments);
     }
 
     @DeleteMapping("/{commentId}/post/{postId}")
