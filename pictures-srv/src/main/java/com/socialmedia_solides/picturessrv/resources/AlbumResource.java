@@ -38,13 +38,14 @@ public class AlbumResource {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id,
                                            @RequestHeader(value = "clientId") String clientId) {
-        albumSrv.deleteById(id,clientId);
+        albumSrv.deleteById(id, clientId);
         return ResponseEntity.status(200).build();
     }
 
     @PostMapping("/photos")
-    public ResponseEntity<Images> sendImages(@RequestBody @Valid ImagesDto imagesDto){
+    public ResponseEntity<Images> sendImages(@RequestBody @Valid ImagesDto imagesDto) {
         Images images = imagesSrv.sendImages(imagesDto);
         return ResponseEntity.ok(images);
     }
+
 }
